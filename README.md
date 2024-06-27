@@ -15,6 +15,7 @@ A simple blog post using Node.js/Express, MongoDB and Vue as an frontend
 - Axios (HTTP Client)
 - MongoDB (Database)
 - Tailwind CSS with Vite (UI components)
+- Copilot (AI tool)
 
 ### Setup Instructions
 
