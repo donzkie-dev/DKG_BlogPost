@@ -1,0 +1,71 @@
+<script setup>
+import { useRouter } from 'vue-router';
+import { ref } from 'vue';
+import axios from 'axios';
+
+const router = useRouter();
+const email = ref('');
+const username = ref('');
+const password = ref('');
+const header = ref("Login");
+const button = ref("Sign Up");
+const respond = ref(null);
+var select = "login"
+
+function toggle(idk) {
+  if (idk === "Sign Up") {
+    header.value = "Sign Up"
+    button.value = "Login"
+    select = "signup"
+  }
+  else {
+    header.value = "Login"
+    button.value = "Sign Up"
+    select = "login"
+  }
+}
+
+async function post() {
+  let response = await axios.post(`/api/${select}`, {
+    email: email,
+    username: username,
+    password: password
+  })
+  if (response.data.includes("successful")) {
+    let uuid = response.data.replace("successful", '');
+    window.sessionStorage.setItem("session", uuid);
+    router.push({ path: '/' });
+  } else if (response.data.includes("created")) {
+    select = "login";
+    post();
+  } else respond.value = response.data
+};
+</script>
+
+<template>
+  <div class="h-fit flex justify-center items-center flex-col m-24">
+    <div class="bg-nav-bg p-2 py-0 rounded-xl">
+      <div>
+        <h1 class="text-4xl m-6 base_color_text text-center font-poppins">{{ header }}</h1>
+        <h2 class="text-red-600 m-2 text-center" v-if="respond">{{ respond }}</h2>
+      </div>
+      <form @submit.prevent="post">
+        <div>
+          <input class="m-2 w-buttonr h-10 text-2xl outline-blue-500 outline-8 text-center"
+            v-if="header === 'Sign Up'" v-model="email" placeholder="Email" required>
+        </div>
+        <div>
+          <input class="m-2 w-buttonr h-10 text-2xl outline-blue-500 outline-8 text-center"
+            v-model="username" placeholder="Username" required>
+        </div>
+        <div>
+          <input class="m-2 w-buttonr h-10 text-2xl outline-blue-500 outline-8 text-center"
+            v-model="password" placeholder="Password" type="password" required>
+        </div>
+        <button type="submit"
+          class="m-2 rounded-xl base_background font-poppins text-2xl text-center text-white w-buttonr h-10">Submit</button>
+      </form>
+      <button class="text-white" @click="toggle(button)">{{ button }}</button>
+    </div>
+  </div>
+</template>
