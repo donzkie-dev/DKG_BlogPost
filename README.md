@@ -40,5 +40,16 @@ A simple blog post using Node.js/Express, MongoDB and Vue as an frontend
 - **Post Comment**: Create a new comment for specific blog
 
 ### Screenshots 
+![SignUp](https://github.com/donzkie-dev/DKG_BlogPost/assets/20560079/6f1a5fed-d6ec-49db-9064-600f73de029c) 
+
+![Login](https://github.com/donzkie-dev/DKG_BlogPost/assets/20560079/6681f416-787b-417f-b565-8a107884b927) 
+
+![Home](https://github.com/donzkie-dev/DKG_BlogPost/assets/20560079/c0df9803-7fae-4f2e-8691-4e46b5d69228)
+
+![Comment](https://github.com/donzkie-dev/DKG_BlogPost/assets/20560079/cd983fde-8779-4d4a-bde6-3be533089dd1) 
+
+![image](https://github.com/donzkie-dev/DKG_BlogPost/assets/20560079/f63ab9d2-d166-42d8-b355-0bf3b149e8b1)
+
+
 
 
